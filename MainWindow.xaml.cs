@@ -80,7 +80,7 @@ namespace VidsCutter
             }
         }
 
-        // Dran n Drop
+        // Drag n Drop
         private void DnDZone_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -191,6 +191,10 @@ namespace VidsCutter
             {
                 MessageBox.Show("Сначала выберите видео.", "Остановись", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.None);
             }
+        }
+        private void DeleteVideos(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("12");
         }
     }
 }

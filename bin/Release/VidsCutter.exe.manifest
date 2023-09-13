@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="VidsCutter.exe" size="85504">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="VidsCutter.exe" size="86016">
       <assemblyIdentity name="VidsCutter" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MJ3Q5M6K51fHPYo7KXc45WIfSMF4aXbmaePGmuokE3E=</dsig:DigestValue>
+        <dsig:DigestValue>SkIUXSR9WQ1I2Wtkj154tUFZ3B+CwqjHdmseDfNWHEg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -96,13 +96,13 @@
       <dsig:DigestValue>ZX0GycRCszLWm6wcOmd0y2rrJ8pLVYSQln6zwhpjJ3c=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="VidsCutter.pdb" size="4872">
+  <file name="VidsCutter.pdb" size="4912">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mqLOqDW6zDhSAXH8YScSBHBaQeBlu1nNqnPTkNBvzt4=</dsig:DigestValue>
+      <dsig:DigestValue>hox4YVxoaUajgCWhaml3JyC95lSCdLPivNAt9iaQU7M=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
